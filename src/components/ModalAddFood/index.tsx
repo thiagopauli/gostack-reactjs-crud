@@ -28,16 +28,13 @@ interface IModalProps {
   handleAddFood: (food: Omit<IFoodPlate, 'id' | 'available'>) => void;
 }
 
-const ModalAddFood: React.FC<IModalProps> = ({
-  isOpen,
-  setIsOpen,
-  handleAddFood,
-}) => {
+const ModalAddFood: React.FC<IModalProps> = ({ isOpen, setIsOpen, handleAddFood }) => {
   const formRef = useRef<FormHandles>(null);
 
   const handleSubmit = useCallback(
     async (data: ICreateFoodData) => {
-      // TODO ADD A NEW FOOD AND CLOSE THE MODAL
+      handleAddFood(data);
+      setIsOpen();
     },
     [handleAddFood, setIsOpen],
   );

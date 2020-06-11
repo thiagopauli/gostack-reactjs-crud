@@ -29,17 +29,13 @@ interface IEditFoodData {
   description: string;
 }
 
-const ModalEditFood: React.FC<IModalProps> = ({
-  isOpen,
-  setIsOpen,
-  editingFood,
-  handleUpdateFood,
-}) => {
+const ModalEditFood: React.FC<IModalProps> = ({ isOpen, setIsOpen, editingFood, handleUpdateFood }) => {
   const formRef = useRef<FormHandles>(null);
 
   const handleSubmit = useCallback(
     async (data: IEditFoodData) => {
-      // EDIT A FOOD PLATE AND CLOSE THE MODAL
+      handleUpdateFood(data);
+      setIsOpen();
     },
     [handleUpdateFood, setIsOpen],
   );
